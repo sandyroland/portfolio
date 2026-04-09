@@ -5,70 +5,55 @@
     <title>Bonjour</title>
     <style>
         body {
-            background-color: #ffcf39;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: #ffcf39;
+        }
+
+        /* Soleil en arrière-plan */
+        .sun-background {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #FFD700 40%, transparent 41%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* Rayons */
+        .sun-background::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            transform: translate(-50%, -50%);
+            background: repeating-conic-gradient(
+                #FFD700 0deg 10deg,
+                transparent 10deg 20deg
+            );
+            border-radius: 50%;
+            opacity: 0.6;
         }
 
         h1 {
+            position: relative;
+            z-index: 1;
             color: white;
             font-size: 3em;
-            margin-bottom: 40px;
-        }
-
-        .sun {
-            width: 120px;
-            height: 120px;
-            background: #FFD700;
-            border-radius: 50%;
-            position: relative;
-        }
-
-        /* yeux */
-        .eye {
-            width: 12px;
-            height: 12px;
-            background: black;
-            border-radius: 50%;
-            position: absolute;
-            top: 40px;
-        }
-
-        .eye.left {
-            left: 35px;
-        }
-
-        .eye.right {
-            right: 35px;
-        }
-
-        /* sourire */
-        .smile {
-            width: 50px;
-            height: 25px;
-            border: 4px solid black;
-            border-top: none;
-            border-radius: 0 0 50px 50px;
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
         }
     </style>
 </head>
 <body>
-    <h1>Bonjour</h1>
 
-    <div class="sun">
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="smile"></div>
-    </div>
+    <div class="sun-background"></div>
+    <h1>Bonjour</h1>
 
 </body>
 </html>
