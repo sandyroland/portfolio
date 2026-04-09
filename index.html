@@ -12,10 +12,10 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            background: #2c2c2c; /* gris foncé */
+            background: #2c2c2c;
         }
 
-        /* Soleil en arrière-plan */
+        /* Soleil */
         .sun-background {
             position: absolute;
             width: 600px;
@@ -25,28 +25,43 @@
             z-index: 0;
         }
 
-        /* Rayons */
+        /* Rayons lumineux */
         .sun-background::before {
             content: "";
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 800px;
-            height: 800px;
+            width: 900px;
+            height: 900px;
             transform: translate(-50%, -50%);
             background: repeating-conic-gradient(
-                #FFD700 0deg 10deg,
-                transparent 10deg 20deg
+                rgba(255, 215, 0, 0.8) 0deg 8deg,
+                rgba(255, 215, 0, 0.1) 8deg 16deg
             );
             border-radius: 50%;
-            opacity: 0.6;
+            filter: blur(8px);
+            animation: rotate 20s linear infinite;
+        }
+
+        /* Animation rotation */
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         h1 {
             position: relative;
             z-index: 1;
-            color: #ffcf39; /* texte assorti au soleil */
             font-size: 3em;
+            color: #2c2c2c; /* même gris que le fond */
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.4);
         }
     </style>
 </head>
